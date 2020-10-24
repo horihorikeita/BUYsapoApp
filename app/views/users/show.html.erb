@@ -1,0 +1,22 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+    
+      <h2><%= @user.name %></h2>
+    
+      <p><%= @user.email %></p>
+      <% if @user.id == @current_user.id %>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <% end %>
+    </div>
+
+     <% @user.uploads.each do |upload| %>
+      <%= link_to(upload.title, "/uploads/#{upload.id}") %>
+      <div>
+     <%= image_tag upload.image_url( ) if upload.image.present? %>
+    </div>
+        <%= link_to(upload.body, "/users/#{upload.user.id}") %>
+          
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="h1">商品一覧</h1>
+<div class="index">
+
+<% @uploads.each do |upload| %>
+
+
+  
+      
+  <h2 class="h2 mt-4">名前：<%= upload.title %></h2>
+        
+    <div>
+     <%= image_tag upload.image_url( ) if upload.image.present? %>
+    </div>
+      <h3 class="h3 m-3">値段：<%= upload.body %></h3>
+      
+     
+    
+
+      <p colspan="3"></p>
+
+
+  <tr class="m-5">
+        <td><%= link_to '詳細', upload ,{class: "h3 ml-4"}%></td>
+        <td><%= link_to '編集', edit_upload_path(upload),{class: "h3 ml-4"} %></td>
+        <td><%= link_to '削除', upload, {class: "h3 m-4" ,method: :delete, date:{confirm: '削除しますか?'}}  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<p class="mt-3">
+<%= link_to '新規投稿', new_upload_path, {class:"h3 mt-5"} %>
+<p>
+</div>

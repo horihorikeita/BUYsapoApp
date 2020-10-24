@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BUYsapoApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    </head>
+    
+    <body> <header>
+    <h2 class="header-logo">
+    <% if @current_user %>
+          <%= link_to("バイサポ", "/uploads", {class:"header-logo"}) %>
+        <% else %>
+          <%= link_to("バイサポ", "/",{class:"header-logo"}) %>
+        <% end %>
+    </h2>
+    <nav>
+    <ul class="nav nav-js">
+    <% if @current_user %>
+    <li>
+     <li><%= link_to(@current_user.name, "/users/#{@current_user.id}", {class: "nav-item"}) %></li>
+    </li>
+    <li><%= link_to("商品一覧", "/uploads", {class: "nav-item"}) %></li>
+    <li><%= link_to("新規投稿", "/uploads/new", {class: "nav-item"}) %></li>
+    <li><%= link_to("ユーザー一覧", "/users/index", {class: "nav-item"}) %></li>
+    <li><%= link_to("ログアウト", "/logout", {method: :post , class: "nav-item"}) %></li>
+    <% else %>
+    <li><%= link_to("ホーム", "/", {class: "nav-item"}) %></li>
+    <li><%= link_to("新規登録", "/signup", {class: "nav-item"}) %></li>
+    <li><%= link_to("ログイン", "/login", {class: "nav-item"}) %></li>
+    <% end %>
+    </ul>
+    </nav>
+    <button
+    class="js-nav-button nav-button"
+      aria-expanded="false"
+      aria-label="メインメニュー"
+      >
+      <span></span>
+      </button>
+      </header>
+
+        <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+      <%= yield %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

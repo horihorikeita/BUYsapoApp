@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<div class="post-user-name">
+ <%= link_to(@user.name, "/users/#{@user.id}") %>
+ </div>
+<p>
+  <strong>名前:</strong>
+  <%= @upload.title %>
+</p>
+
+<p>
+   <%= image_tag @upload.image_url( ) if @upload.image.present? %>
+</p>
+
+
+<p>値段：<%= @upload.body %></p>
+<% if @upload.user_id == @current_user.id %>
+<%= link_to '編集', edit_upload_path(@upload) %> |
+<%= link_to '戻る', uploads_path %>
+ <% end %>
