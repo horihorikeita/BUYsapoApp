@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="post-user-name">
- <%= link_to(@user.name, "/users/#{@user.id}") %>
+ <%= link_to(@user.name, "/users/#{@user.id}",{class: "h2 mt-5"}) %>
  </div>
 <p>
-  <strong>名前:</strong>
+  <strong class="h2 mt-4">名前:</strong>
   <%= @upload.title %>
 </p>
 

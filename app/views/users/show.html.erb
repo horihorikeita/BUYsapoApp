@@ -2,20 +2,20 @@
   <div class="container">
     <div class="user">
     
-      <h2><%= @user.name %></h2>
+      <h2 class="h2"><%= @user.name %></h2>
     
-      <p><%= @user.email %></p>
+      <p class="h4 mt-5"><%= @user.email %></p>
       <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+        <%= link_to("編集", "/users/#{@user.id}/edit", {class: "h4 mt-5"}) %>
       <% end %>
     </div>
 
      <% @user.uploads.each do |upload| %>
-      <%= link_to(upload.title, "/uploads/#{upload.id}") %>
+      <%= link_to(upload.title, "/uploads/#{upload.id}",{class: "h4 mt-5"}) %>
       <div>
      <%= image_tag upload.image_url( ) if upload.image.present? %>
     </div>
-        <%= link_to(upload.body, "/users/#{upload.user.id}") %>
+        <%= link_to(upload.body, "/users/#{upload.user.id}",{class: "h4 mt-5"}) %>
           
     <% end %>
   </div>
